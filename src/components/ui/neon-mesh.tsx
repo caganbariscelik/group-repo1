@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect, useRef, useSyncExternalStore } from "react";
+import React, { useEffect, useRef } from "react";
 
 interface Point3D {
     x: number;
@@ -24,20 +24,6 @@ interface Constraint3D {
     length: number;
 }
 
-function subscribeToColorScheme(callback: () => void) {
-    const mediaQuery = window.matchMedia("(prefers-color-scheme: dark)");
-    mediaQuery.addEventListener("change", callback);
-    return () => mediaQuery.removeEventListener("change", callback);
-}
-
-function getColorSchemeSnapshot() {
-    return window.matchMedia("(prefers-color-scheme: dark)").matches;
-}
-
-function getColorSchemeServerSnapshot() {
-    return true;
-}
-
 export interface NeonMeshProps {
     title?: string;
     subtitle?: string;
@@ -53,11 +39,6 @@ export function NeonMesh({
 }: NeonMeshProps) {
     const containerRef = useRef<HTMLDivElement | null>(null);
     const canvasRef = useRef<HTMLCanvasElement | null>(null);
-    const isDarkMode = useSyncExternalStore(
-        subscribeToColorScheme,
-        getColorSchemeSnapshot,
-        getColorSchemeServerSnapshot,
-    );
 
     useEffect(() => {
         const canvas = canvasRef.current;
@@ -203,8 +184,8 @@ export function NeonMesh({
             const cosY = Math.cos(mouse.angleY);
             const sinY = Math.sin(mouse.angleY);
 
-            const bgColor = isDarkMode ? "#050702" : "#f7fee7";
-            const baseMeshColor = isDarkMode ? "101, 163, 13" : "132, 204, 22";
+            const bgColor = "#050702";
+            const baseMeshColor = "101, 163, 13";
             const neonLime = "#BEF202";
 
             ctx.fillStyle = bgColor;
@@ -317,7 +298,7 @@ export function NeonMesh({
                     ? neonLime
                     : `rgba(${baseMeshColor}, ${Math.min(
                         1,
-                        Math.max(0.1, (isDarkMode ? 0.25 : 0.4) * avgScale)
+                        Math.max(0.1, 0.25 * avgScale)
                     )})`;
                 ctx.lineWidth = isHot ? 2 * avgScale : 0.8 * avgScale;
 
@@ -353,7 +334,7 @@ export function NeonMesh({
             container.removeEventListener("mousemove", handleMouseMove);
             container.removeEventListener("mouseleave", handleMouseLeave);
         };
-    }, [isDarkMode]);
+    }, []);
 
     return (
         <div ref={containerRef} className={className}>
