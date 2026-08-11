@@ -63,7 +63,7 @@ export default function ClaimForm({ itemId }: { itemId: string }) {
       <button
         type="submit"
         disabled={loading}
-        className="w-full rounded-md bg-brand-600 px-4 py-2 text-sm font-medium text-white hover:bg-brand-700 disabled:opacity-60 sm:w-auto"
+        className="w-full rounded-md bg-brand-500 px-4 py-2 text-sm font-semibold text-gray-900 hover:bg-brand-400 disabled:opacity-60 sm:w-auto"
       >
         {loading ? "Sending…" : "Send Claim"}
       </button>

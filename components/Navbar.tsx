@@ -9,17 +9,17 @@ export default async function Navbar() {
   } = await supabase.auth.getUser();
 
   return (
-    <header className="border-b border-gray-200 bg-white">
+    <header className="sticky top-0 z-20 border-b border-white/10 bg-black/70 backdrop-blur-xl">
       <div className="mx-auto flex max-w-6xl items-center justify-between gap-4 px-4 py-3 sm:px-6">
-        <Link href="/browse" className="text-lg font-semibold text-gray-900">
+        <Link href="/browse" className="text-lg font-semibold text-white">
           Campus Lost &amp; Found
         </Link>
 
-        <nav className="flex items-center gap-4 text-sm font-medium text-gray-600 sm:gap-6">
-          <Link href="/browse" className="hover:text-gray-900">
+        <nav className="flex items-center gap-4 text-sm font-medium text-gray-300 sm:gap-6">
+          <Link href="/browse" className="transition hover:text-brand-400">
             Browse Items
           </Link>
-          <Link href="/sent-claims" className="hover:text-gray-900">
+          <Link href="/sent-claims" className="transition hover:text-brand-400">
             Sent Claims
           </Link>
         </nav>
@@ -27,13 +27,13 @@ export default async function Navbar() {
         <div className="flex items-center gap-3">
           {user ? (
             <>
-              <span className="hidden text-sm text-gray-500 sm:inline">{user.email}</span>
+              <span className="hidden text-sm text-gray-400 sm:inline">{user.email}</span>
               <LogoutButton />
             </>
           ) : (
             <Link
               href="/login"
-              className="rounded-md bg-brand-600 px-3 py-1.5 text-sm font-medium text-white hover:bg-brand-700"
+              className="rounded-md bg-brand-500 px-3 py-1.5 text-sm font-semibold text-gray-900 transition hover:bg-brand-400"
             >
               Log in
             </Link>

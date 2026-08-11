@@ -94,7 +94,7 @@ export default function SignupForm({ redirectTo }: { redirectTo: string }) {
       <button
         type="submit"
         disabled={loading}
-        className="w-full rounded-md bg-brand-600 px-3 py-2 text-sm font-medium text-white hover:bg-brand-700 disabled:opacity-60"
+        className="w-full rounded-md bg-brand-500 px-3 py-2 text-sm font-semibold text-gray-900 hover:bg-brand-400 disabled:opacity-60"
       >
         {loading ? "Signing up…" : "Sign up"}
       </button>
@@ -103,7 +103,7 @@ export default function SignupForm({ redirectTo }: { redirectTo: string }) {
         Already have an account?{" "}
         <Link
           href={`/login?redirect=${encodeURIComponent(redirectTo)}`}
-          className="font-medium text-brand-600 hover:underline"
+          className="font-medium text-brand-700 hover:underline"
         >
           Log in
         </Link>

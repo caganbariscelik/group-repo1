@@ -6,6 +6,7 @@ import { formatDate } from "@/lib/format";
 import { ItemTypeBadge, ItemStatusBadge, ClaimStatusBadge } from "@/components/StatusBadge";
 import ItemImage from "@/components/ItemImage";
 import ClaimForm from "@/components/ClaimForm";
+import { NeonMesh } from "@/components/ui/neon-mesh";
 
 export const dynamic = "force-dynamic";
 
@@ -41,12 +42,14 @@ export default async function ItemDetailPage({ params }: { params: { id: string 
   const isClaimable = item.type === "found" && item.status === "open";
 
   return (
-    <div className="mx-auto max-w-3xl space-y-6">
-      <Link href="/browse" className="text-sm font-medium text-brand-600 hover:underline">
+    <>
+      <NeonMesh variant="backdrop" />
+      <div className="mx-auto max-w-3xl space-y-6">
+      <Link href="/browse" className="text-sm font-medium text-brand-400 hover:text-brand-300 hover:underline">
         ← Back to Browse
       </Link>
 
-      <div className="overflow-hidden rounded-lg border border-gray-200 bg-white">
+      <div className="overflow-hidden rounded-lg border border-gray-200 bg-white shadow-2xl shadow-black/40">
         <div className="relative h-64 w-full sm:h-80">
           <ItemImage src={item.image_url} alt={item.title} className="h-64 w-full object-cover sm:h-80" />
         </div>
@@ -100,7 +103,7 @@ export default async function ItemDetailPage({ params }: { params: { id: string 
               ) : (
                 <Link
                   href={`/login?redirect=${encodeURIComponent(`/items/${item.id}`)}`}
-                  className="inline-block rounded-md bg-brand-600 px-4 py-2 text-sm font-medium text-white hover:bg-brand-700"
+                  className="inline-block rounded-md bg-brand-500 px-4 py-2 text-sm font-semibold text-gray-900 hover:bg-brand-400"
                 >
                   Log in to send a claim
                 </Link>
@@ -109,6 +112,7 @@ export default async function ItemDetailPage({ params }: { params: { id: string 
           )}
         </div>
       </div>
-    </div>
+      </div>
+    </>
   );
 }

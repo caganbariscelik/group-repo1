@@ -66,7 +66,7 @@ export default function BrowseControls({
         />
         <button
           type="submit"
-          className="rounded-md bg-brand-600 px-4 py-2 text-sm font-medium text-white hover:bg-brand-700"
+          className="rounded-md bg-brand-500 px-4 py-2 text-sm font-semibold text-gray-900 hover:bg-brand-400"
         >
           Search
         </button>
@@ -81,7 +81,7 @@ export default function BrowseControls({
               onClick={() => updateParams({ type: opt.value })}
               className={`px-3 py-1.5 text-sm font-medium ${
                 (initialType || "all") === opt.value
-                  ? "bg-brand-600 text-white"
+                  ? "bg-brand-500 text-gray-900"
                   : "bg-white text-gray-600 hover:bg-gray-50"
               }`}
             >

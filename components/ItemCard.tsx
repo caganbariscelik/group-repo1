@@ -8,7 +8,7 @@ export default function ItemCard({ item }: { item: Item }) {
   return (
     <Link
       href={`/items/${item.id}`}
-      className="group flex flex-col overflow-hidden rounded-lg border border-gray-200 bg-white transition hover:shadow-md"
+      className="group flex flex-col overflow-hidden rounded-lg border border-gray-200 bg-white shadow-lg shadow-black/30 transition hover:shadow-2xl hover:shadow-black/50"
     >
       <div className="relative h-40 w-full">
         <ItemImage src={item.image_url} alt={item.title} className="h-40 w-full object-cover" />

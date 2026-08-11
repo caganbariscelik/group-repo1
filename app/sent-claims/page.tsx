@@ -5,6 +5,7 @@ import type { ClaimWithOwner } from "@/lib/types";
 import { formatDate } from "@/lib/format";
 import { ClaimStatusBadge } from "@/components/StatusBadge";
 import ItemImage from "@/components/ItemImage";
+import { NeonMesh } from "@/components/ui/neon-mesh";
 
 export const dynamic = "force-dynamic";
 
@@ -27,10 +28,12 @@ export default async function SentClaimsPage() {
     .returns<ClaimWithOwner[]>();
 
   return (
-    <div className="mx-auto max-w-3xl space-y-6">
+    <>
+      <NeonMesh variant="backdrop" />
+      <div className="mx-auto max-w-3xl space-y-6">
       <div>
-        <h1 className="text-2xl font-semibold text-gray-900">Sent Claims</h1>
-        <p className="text-sm text-gray-500">Claims you&apos;ve sent for found items.</p>
+        <h1 className="text-2xl font-semibold text-white">Sent Claims</h1>
+        <p className="text-sm text-gray-400">Claims you&apos;ve sent for found items.</p>
       </div>
 
       {error && (
@@ -40,9 +43,9 @@ export default async function SentClaimsPage() {
       )}
 
       {!error && claims && claims.length === 0 && (
-        <p className="rounded-md border border-dashed border-gray-300 p-8 text-center text-sm text-gray-500">
+        <p className="rounded-md border border-dashed border-gray-600 bg-white/5 p-8 text-center text-sm text-gray-300">
           You haven&apos;t sent any claims yet.{" "}
-          <Link href="/browse" className="font-medium text-brand-600 hover:underline">
+          <Link href="/browse" className="font-medium text-brand-400 hover:text-brand-300 hover:underline">
             Browse items
           </Link>
         </p>
@@ -56,7 +59,7 @@ export default async function SentClaimsPage() {
           return (
             <div
               key={claim.id}
-              className="flex flex-col gap-3 rounded-lg border border-gray-200 bg-white p-4 sm:flex-row"
+              className="flex flex-col gap-3 rounded-lg border border-gray-200 bg-white p-4 shadow-xl shadow-black/30 sm:flex-row"
             >
               <ItemImage
                 src={item?.image_url ?? null}
@@ -96,6 +99,7 @@ export default async function SentClaimsPage() {
           );
         })}
       </div>
-    </div>
+      </div>
+    </>
   );
 }
