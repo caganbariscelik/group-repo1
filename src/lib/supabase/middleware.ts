@@ -11,6 +11,7 @@ const PROTECTED_PREFIXES = [
   "/my-listings",
   "/edit-listing",
   "/profile-setup",
+  "/sent-claims",
 ];
 
 function isProtectedPath(pathname: string) {

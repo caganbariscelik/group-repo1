@@ -39,6 +39,14 @@ export async function Header() {
               {t.nav.myListings}
             </Link>
           )}
+          {user && (
+            <Link
+              href="/sent-claims"
+              className="text-sm text-slate-300 transition-colors hover:text-white"
+            >
+              {t.nav.sentClaims}
+            </Link>
+          )}
           {user && name ? (
             <AuthStatusBar name={name} email={user.email ?? ""} logoutLabel={t.nav.logout} />
           ) : (
